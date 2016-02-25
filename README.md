@@ -27,12 +27,12 @@ Replace unique-registration-code with your unique code. You can get the code fro
 #!/bin/bash
 # echo Defaults:root \!requiretty >> /etc/sudoers
 
-#Install CHT linux agent for CHT-Sidd-Test account
+#Install CHT linux agent
 echo Defaults:root \!requiretty >> /etc/sudoers
 wget https://s3.amazonaws.com/remote-collector/agent/v14/install_cht_perfmon.sh -O install_cht_perfmon.sh
 sudo sh install_cht_perfmon.sh 14 UNIQUE_REGISTRATION_CODE aws
 
-# SAMPLE CLOUD-INIT COMMANDS THAT THE CLIENT MIGHT HAVE
+# ADDITIONAL SAMPLE CLOUD-INIT COMMANDS THAT YOU MIGHT HAVE
 # yum update -y
 # yum install httpd -y
 # service httpd start
