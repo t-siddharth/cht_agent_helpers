@@ -13,13 +13,16 @@ sudo sh install_cht_perfmon.sh 14 #{unique registration code} aws;
 
 
 We have created CloudHealth Linux agent installation helpers for the commonly used provisioning automation tools. We have helpers for:
+  
   - [Cloud Init](https://gist.github.com/siddtewari/c850ec5c10d8efdbd3bb#cloud-init) 
   - [Chef Recipe](https://gist.github.com/siddtewari/c850ec5c10d8efdbd3bb/#chef-recipe)
+  - 
 
 <hr/>
-##### Cloud Init
+##### Cloud Init - CloudHealth Agent Installation Helper
+<hr/>
 
-User Data that you can use with AWS as a bootstrap script
+User Data that you can use with AWS as a bootstrap script. To learn more about cloud-init, please refer to the [AWS documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
 
 Replace unique-registration-code with your unique code. You can get the code from the agent configuration page https://apps.cloudhealthtech.com/agent_settings/edit
 
@@ -41,11 +44,10 @@ sudo sh install_cht_perfmon.sh 14 UNIQUE_REGISTRATION_CODE aws
 
 ```
 <hr/>
-##### Chef Recipe
+##### Chef Recipe - CloudHealth Agent Installation Helper
+<hr/>
 
-You can install the CloudHealth Agent using the [Chef Recipe ](https://gist.github.com/siddtewari/1d406064ecacc52dfd0d) documented in this secret gist. Also listed below for convenience.
-
-Replace unique-registration-code with your unique code. You can get the code from the agent configuration page https://apps.cloudhealthtech.com/agent_settings/edit
+You can install the CloudHealth Agent using the following Chef Recipe. Replace unique-registration-code with your unique code. You can get this code from the agent configuration page https://apps.cloudhealthtech.com/agent_settings/edit
 
 ```
 registration_code = "unique-registration-code" 
@@ -57,4 +59,25 @@ execute "Install Agent" do
   only_if { node.attribute?(:ec2) }
 end
 ```
+
 <hr/>
+##### Ansible Playbook - CloudHealth Agent Installation Helper - BETA 
+<hr/>
+ 
+
+```
+---
+- hosts: webservers
+
+vars:
+  cht_unique_registration_code: ???
+
+- name: Ensure the agent is installed
+  command:
+    wget https://s3.amazonaws.com/remote-collector/agent/v14/install_cht_perfmon.sh -O /tmp/install_cht_perfmon.sh &&
+    /tmp/install_cht_perfmon.sh 14 {{ cht_unique_registration_code }} aws
+  args:
+    creates: /opt/cht_perfmon
+  sudo: yes
+  
+  ```
