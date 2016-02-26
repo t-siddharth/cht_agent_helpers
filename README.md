@@ -14,9 +14,9 @@ sudo sh install_cht_perfmon.sh 14 #{unique registration code} aws;
 
 We have created CloudHealth Linux agent installation helpers for the commonly used provisioning automation tools. We have helpers for:
   
-  - [Cloud Init](https://gist.github.com/siddtewari/c850ec5c10d8efdbd3bb#cloud-init) 
-  - [Chef Recipe](https://gist.github.com/siddtewari/c850ec5c10d8efdbd3bb/#chef-recipe)
-  - 
+  - [Cloud Init](https://github.com/siddtewari/cht_agent_helpers#cloud-init---cloudhealth-agent-installation-helper) 
+  - [Chef Recipe](https://github.com/siddtewari/cht_agent_helpers#chef-recipe---cloudhealth-agent-installation-helper)
+  - [Ansible Playbook - BETA](https://github.com/siddtewari/cht_agent_helpers#ansible-playbook---cloudhealth-agent-installation-helper---beta)
 
 <hr/>
 ##### Cloud Init - CloudHealth Agent Installation Helper
