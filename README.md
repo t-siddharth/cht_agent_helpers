@@ -6,8 +6,8 @@ The CloudHealth Linux Agent allows us to collect instance-level metrics.
 The configuration details and [default settings can be viewed here](https://apps.cloudhealthtech.com/agent_settings/edit): 
 
 ```
-wget https://s3.amazonaws.com/remote-collector/agent/v14/install_cht_perfmon.sh -O install_cht_perfmon.sh;
-sudo sh install_cht_perfmon.sh 14 #{unique registration code} aws;
+wget https://s3.amazonaws.com/remote-collector/agent/v18/install_cht_perfmon.sh -O install_cht_perfmon.sh;
+sudo sh install_cht_perfmon.sh 18 #{unique registration code} aws;
 ```
 
 
@@ -32,8 +32,8 @@ Replace unique-registration-code with your unique code. You can get the code fro
 
 #Install CHT linux agent
 echo Defaults:root \!requiretty >> /etc/sudoers
-wget https://s3.amazonaws.com/remote-collector/agent/v14/install_cht_perfmon.sh -O install_cht_perfmon.sh
-sudo sh install_cht_perfmon.sh 14 UNIQUE_REGISTRATION_CODE aws
+wget https://s3.amazonaws.com/remote-collector/agent/v18/install_cht_perfmon.sh -O install_cht_perfmon.sh
+sudo sh install_cht_perfmon.sh 18 UNIQUE_REGISTRATION_CODE aws
 
 # ADDITIONAL SAMPLE CLOUD-INIT COMMANDS THAT YOU MIGHT HAVE
 # yum update -y
@@ -53,7 +53,7 @@ You can install the CloudHealth Agent using the following Chef Recipe. Replace u
 registration_code = "unique-registration-code" 
 
 execute "Install Agent" do
-  command "wget https://s3.amazonaws.com/remote-collector/agent/install_cht_perfmon.sh -O install_cht_perfmon.sh; sh install_cht_perfmon.sh 14 #{registration_code} aws; exit 0"
+  command "wget https://s3.amazonaws.com/remote-collector/agent/install_cht_perfmon.sh -O install_cht_perfmon.sh; sh install_cht_perfmon.sh 18 #{registration_code} aws; exit 0"
   ignore_failure true
   not_if "test -d /opt/cht_perfmon"
   only_if { node.attribute?(:ec2) }
@@ -74,8 +74,8 @@ vars:
 
 - name: Ensure the agent is installed
   command:
-    wget https://s3.amazonaws.com/remote-collector/agent/v14/install_cht_perfmon.sh -O /tmp/install_cht_perfmon.sh &&
-    /tmp/install_cht_perfmon.sh 14 {{ cht_unique_registration_code }} aws
+    wget https://s3.amazonaws.com/remote-collector/agent/v18/install_cht_perfmon.sh -O /tmp/install_cht_perfmon.sh &&
+    /tmp/install_cht_perfmon.sh 18 {{ cht_unique_registration_code }} aws
   args:
     creates: /opt/cht_perfmon
   sudo: yes
