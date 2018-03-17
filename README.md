@@ -63,7 +63,10 @@ end
 <hr/>
 ##### Ansible Playbook - CloudHealth Agent Installation Helper - BETA 
 <hr/>
- 
+
+Replace unique-registration-code with your unique code. You can get the code from the agent configuration page https://apps.cloudhealthtech.com/agent_settings/edit
+
+Note: Do not use the API Key from https://apps.cloudhealthtech.com/profile
 
 ```
 ---
